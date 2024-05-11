@@ -30,5 +30,11 @@
         <action
             android:id="@+id/action_editTaskFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+
+        <argument
+            android:name="task"
+            app:argType="com.example.taskmanagementapp.model.Task"
+            app:nullable="true"/>
+
     </fragment>
 </navigation>

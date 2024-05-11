@@ -47,12 +47,12 @@ class EditTaskFragment : Fragment(R.layout.fragment_edit_task), MenuProvider {
         tasksViewModel = (activity as MainActivity).taskViewModel
         currentTask = args.task!!
 
-        binding.editNoteTitle.setText(currentTask.taskTitle)
-        binding.editNoteDesc.setText(currentTask.taskDesc)
+        binding?.editNoteTitle?.setText(currentTask.taskTitle)
+        binding?.editNoteDesc?.setText(currentTask.taskDesc)
 
-        binding.editNoteFab.setOnClickListener{
-            val taskTitle = binding.editNoteTitle.text.toString().trim()
-            val taskDesc = binding.editNoteDesc.text.toString().trim()
+        binding?.editNoteFab?.setOnClickListener{
+            val taskTitle = binding!!.editNoteTitle.text.toString().trim()
+            val taskDesc = binding!!.editNoteDesc.text.toString().trim()
 
             if (taskTitle.isNotEmpty()){
                 val task = Task(currentTask.id, taskTitle, taskDesc)

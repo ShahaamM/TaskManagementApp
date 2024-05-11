@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskmanagementapp.databinding.TaskLayoutBinding
 import com.example.taskmanagementapp.fragments.HomeFragment
+import com.example.taskmanagementapp.fragments.HomeFragmentDirections
 import com.example.taskmanagementapp.model.Task
 
 class TaskAdapter: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
@@ -44,7 +45,7 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
         holder.itemBinding.noteDesc.text = currentTask.taskDesc
 
         holder.itemView.setOnClickListener{
-            val direction = HomeFragmentDirections.actionHomeFragmentToEditNoteFragment(currentTask)
+            val direction = HomeFragmentDirections.actionHomeFragmentToEditTaskFragment(currentTask)
             it.findNavController().navigate(direction)
 
         }

@@ -8,4 +8,23 @@
         android:title="Search"
         app:showAsAction="ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <item
+        android:id="@+id/sortByPriorityMenu"
+        android:title="Sort by Priority"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/sortByHighestPriority"
+                android:title="Sort by Highest Priority" />
+            <item
+                android:id="@+id/sortByLowestPriority"
+                android:title="Sort by Lowest Priority" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/toggleLayoutMenu"
+        android:title="Toggle Layout"
+        app:showAsAction="never" />
 </menu>

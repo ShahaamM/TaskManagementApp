@@ -11,5 +11,7 @@ data class Task(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val taskTitle: String,
-    val taskDesc: String
-) :Parcelable
+    val taskDesc: String,
+    val deadline: Long?, // Nullable Long to store timestamp of deadline
+    val priority: String // HIGH, MEDIUM, LOW priority levels
+) : Parcelable

@@ -35,9 +35,30 @@
                 android:layout_marginTop="8dp"
                 android:maxHeight="170dp"
                 android:text="Description"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:fontFamily="@font/poppins"
                 android:textColor="@color/pink"/>
+
+            <TextView
+                android:id="@+id/deadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Deadline"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/noteDesc" />
+
+            <TextView
+                android:id="@+id/priority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Priority"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/deadline" />
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

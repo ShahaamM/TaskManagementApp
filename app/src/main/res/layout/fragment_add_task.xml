@@ -39,7 +39,7 @@
         <EditText
             android:id="@+id/addNoteDesc"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="120dp"
             android:layout_below="@id/addNoteTitle"
             android:layout_marginTop="12dp"
             android:background="@drawable/pink_border"
@@ -49,5 +49,70 @@
             android:padding="12dp"
             android:textSize="18sp" />
 
+        <TextView
+            android:id="@+id/addPriorityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addNoteDesc"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
+            android:text="Priority:"
+            android:textColor="@color/red"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/addDeadlineLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addPriorityLabel"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
+            android:text="Deadline:"
+            android:textColor="@color/red"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/addPriorityRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addNoteDesc"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/addPriorityLabel"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/highPriority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="High" />
+
+            <RadioButton
+                android:id="@+id/mediumPriority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium" />
+
+            <RadioButton
+                android:id="@+id/lowPriority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low" />
+        </RadioGroup>
+
+        <DatePicker
+            android:id="@+id/addDeadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addPriorityRadioGroup"
+            android:layout_marginStart="-78dp"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@+id/addDeadlineLabel"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
+
     </RelativeLayout>
+
+
 </layout>

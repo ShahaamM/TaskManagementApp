@@ -13,6 +13,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.taskmanagementapp.MainActivity
 import com.example.taskmanagementapp.R
@@ -64,35 +65,29 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         }
     }
 
-
-    private fun setupHomeRecyclerView(){
+    private fun setupHomeRecyclerView() {
         taskAdapter = TaskAdapter()
         binding.homeRecyclerView.apply {
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             setHasFixedSize(true)
             adapter = taskAdapter
-
         }
 
-        activity?.let{
-            tasksViewModel.getAllTasks().observe(viewLifecycleOwner){task ->
-                taskAdapter.differ.submitList(task)
-                updateUI(task)
+        activity?.let {
+            tasksViewModel.getAllTasks().observe(viewLifecycleOwner) { tasks ->
+                taskAdapter.differ.submitList(tasks)
+                updateUI(tasks)
             }
         }
-
     }
 
     private fun searchTask(query: String?) {
         val searchQuery = "%$query%"
-
         tasksViewModel.searchTask(searchQuery).observe(viewLifecycleOwner) { list ->
             taskAdapter.differ.submitList(list)
             updateUI(list)
         }
     }
-
-
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         return false
@@ -119,8 +114,31 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         menuSearch.setOnQueryTextListener(this)
     }
 
-    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return false
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.home_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onMenuItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.toggleLayoutMenu -> {
+                toggleLayout()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun toggleLayout() {
+        val layoutManager = binding.homeRecyclerView.layoutManager
+        if (layoutManager is StaggeredGridLayoutManager) {
+            // Switch to linear layout
+            binding.homeRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        } else if (layoutManager is LinearLayoutManager) {
+            // Switch to staggered layout
+            binding.homeRecyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        }
+    }
 }

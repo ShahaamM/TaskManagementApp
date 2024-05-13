@@ -12,6 +12,9 @@ class TaskRepository(private val db: TaskDatabase) {
     suspend fun updateTask(task: Task) = db.getTaskDao().updateTask(task)
 
     fun getAllTasks() = db.getTaskDao().getAllTasks()
+
+    fun getAllTasksSortedByPriority() = db.getTaskDao().getAllTasksSortedByPriority()
+
     fun searchTask(query: String?) = db.getTaskDao().searchTasks(query)
 
 }

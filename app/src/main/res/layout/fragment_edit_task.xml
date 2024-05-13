@@ -39,7 +39,7 @@
         <EditText
             android:id="@+id/editNoteDesc"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="120dp"
             android:hint="Enter the description"
             android:gravity="top"
             android:padding="12dp"
@@ -48,6 +48,69 @@
             android:background="@drawable/pink_border"
             android:layout_below="@id/editNoteTitle"
             android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/editPriorityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editNoteDesc"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
+            android:text="Priority:"
+            android:textColor="@color/red"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/editDeadlineLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editPriorityLabel"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
+            android:text="Deadline:"
+            android:textColor="@color/red"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/editPriorityRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editNoteDesc"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/editPriorityLabel"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/edithighPriority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="High" />
+
+            <RadioButton
+                android:id="@+id/editmediumPriority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium" />
+
+            <RadioButton
+                android:id="@+id/editlowPriority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low" />
+        </RadioGroup>
+
+        <DatePicker
+            android:id="@+id/editDeadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editPriorityRadioGroup"
+            android:layout_marginStart="-78dp"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@+id/editDeadlineLabel"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/editNoteFab"

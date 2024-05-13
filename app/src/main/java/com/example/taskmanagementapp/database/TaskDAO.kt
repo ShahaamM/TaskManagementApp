@@ -23,6 +23,10 @@ interface TaskDAO {
     @Query("SELECT * FROM TASKS ORDER BY id DESC")
     fun getAllTasks(): LiveData<List<Task>>
 
+    @Query("SELECT * FROM TASKS ORDER BY priority ASC")
+    fun getAllTasksSortedByPriority(): LiveData<List<Task>>
+
+
     @Query("SELECT * FROM TASKS WHERE taskTitle LIKE :query OR taskDesc LIKE :query")
     fun searchTasks(query: String?): LiveData<List<Task>>
 

@@ -26,6 +26,9 @@ class TaskViewModel(app: Application, private val taskRepository: TaskRepository
 
     fun getAllTasks() = taskRepository.getAllTasks()
 
+    fun getAllTasksSortedByPriority() = taskRepository.getAllTasksSortedByPriority()
+
+
     fun searchTask(query: String?) =
         taskRepository.searchTask(query)
 }

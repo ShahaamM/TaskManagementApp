@@ -10,6 +10,9 @@ import com.example.taskmanagementapp.databinding.TaskLayoutBinding
 import com.example.taskmanagementapp.fragments.HomeFragment
 import com.example.taskmanagementapp.fragments.HomeFragmentDirections
 import com.example.taskmanagementapp.model.Task
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class TaskAdapter: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
@@ -38,16 +41,25 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
         return differ.currentList.size
     }
 
+    // Inside onBindViewHolder() function of TaskAdapter
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val currentTask = differ.currentList[position]
 
         holder.itemBinding.noteTitle.text = currentTask.taskTitle
         holder.itemBinding.noteDesc.text = currentTask.taskDesc
+        holder.itemBinding.deadline.text = formatDeadline(currentTask.deadline!!) // Set deadline text
+        holder.itemBinding.priority.text = currentTask.priority // Set priority text
 
         holder.itemView.setOnClickListener{
             val direction = HomeFragmentDirections.actionHomeFragmentToEditTaskFragment(currentTask)
             it.findNavController().navigate(direction)
-
         }
     }
+
+    // Custom function to format deadline if needed
+    private fun formatDeadline(deadline: Long): String {
+        // Implement your custom formatting logic here if needed
+        return SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()).format(Date(deadline))
+    }
+
 }
